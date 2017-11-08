@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :objects
   end
 
+  resources :objects do
+    get 'download', :on => :collection
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

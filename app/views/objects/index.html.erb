@@ -9,6 +9,7 @@
   </tr>
   <tr>
     <td><%= link_to '../', with_prefix(upper_dir(@prefix)) %></td>
+    <td>download</td>
     <td>Directory</td>
     <td>N/A</td>
     <td>N/A</td>
@@ -18,6 +19,8 @@
     <% if object.is_a?(Aliyun::OSS::Object) %>
     <td><%= link_to remove_prefix(object.key, @prefix),
             @bucket.object_url(object.key) %></td>
+    <td><%= link_to object.key,
+      download_objects_path(:bucket_id => @bucket_name, :id => object.key), :remote => true, :class => "download-object" %></td>
     <td><%= object.type %></td>
     <td><%= number_to_human_size(object.size) %></td>
     <td><%= object.last_modified.localtime.to_s %></td>
